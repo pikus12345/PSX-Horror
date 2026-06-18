@@ -1,6 +1,8 @@
+using NLB.Managers;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VContainer;
 
 namespace NLB.Player
 {
@@ -11,9 +13,18 @@ namespace NLB.Player
         [SerializeField] private float sprintSpeed;
         [SerializeField] private CharacterController ch;
         [SerializeField] private CinemachineCamera cam;
+        [SerializeField] private PlayerInput playerInput;
 
         private float Speed => IsSprinting ? sprintSpeed : walkSpeed;
         private Vector2 moveInput;
+
+        [Inject]
+        private void Construct(IInput input)
+        {
+            playerInput.actions = input.GetActionMap().asset;
+            playerInput.defaultActionMap = null;
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
             moveInput = context.ReadValue<Vector2>();
@@ -38,14 +49,14 @@ namespace NLB.Player
             Vector3 forward = cam.transform.forward;
             forward.y = 0;
 
-            return forward;
+            return forward.normalized;
         }
         private Vector3 GetForward()
         {
             Vector3 right = cam.transform.right;
             right.y = 0;
 
-            return right;
+            return right.normalized;
         }
     }
 }
