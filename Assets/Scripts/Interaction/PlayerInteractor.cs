@@ -50,6 +50,7 @@ namespace NLB.Interaction{
         }
         public void OnInteract(InputAction.CallbackContext context)
         {
+            if(context.phase != InputActionPhase.Started) return;
             if (currentTarget != null && currentTarget.CanInteract(this))
             {
                 currentTarget.Interact(this);

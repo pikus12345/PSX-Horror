@@ -17,7 +17,6 @@ namespace NLB.Interaction.Interactables
         public void Toggle()
         {
             IsOpen = !IsOpen;
-            // TODO: Play door sounds
             OnStateChanged?.Invoke(IsOpen);
         }
     }

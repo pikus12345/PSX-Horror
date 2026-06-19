@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using VContainer;
 
@@ -23,8 +24,20 @@ namespace NLB.Interaction.Interactables
         }
         private void HandleStateChanged(bool isOpened)
         {
-            // TODO : Animation via DoTween
-            
+            if(isOpened)
+                OpenDoor();
+            else
+                CloseDoor();
+        }
+        private void OpenDoor()
+        {
+            Vector3 targetRotation = new Vector3(0,90,0);
+            transform.DOLocalRotate(targetRotation, 1f, RotateMode.Fast).SetEase(Ease.OutBounce);
+        }
+        private void CloseDoor()
+        {
+            Vector3 targetRotation = new Vector3(0,0,0);
+            transform.DOLocalRotate(targetRotation, 1f, RotateMode.Fast).SetEase(Ease.OutBounce);
         }
     }
 }
