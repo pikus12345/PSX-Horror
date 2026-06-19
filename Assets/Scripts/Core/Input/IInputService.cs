@@ -5,6 +5,7 @@ namespace NLB.Core.Input
     public interface IInputService
     {
         public void SetInput(InputType type);
-        public InputActionAsset Actions {get;}
+        public InputActionAsset ActionsAsset {get;}
+        public ActionMap Actions {get;}
     }
 }

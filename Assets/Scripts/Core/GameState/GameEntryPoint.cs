@@ -1,4 +1,5 @@
 using NLB.Player;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace NLB.Core.GameState
@@ -16,10 +17,11 @@ namespace NLB.Core.GameState
         public void Start()
         {
             // создать игрока
-            spawner.Spawn();
+            GameObject player = spawner.Spawn();
             // установить начальное состояние
             gsm.ChangeState(new GameplayState());
             // инициализация уровня
+            
         }
     }
 }

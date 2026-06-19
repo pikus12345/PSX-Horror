@@ -25,7 +25,7 @@ namespace NLB.Player
         [Inject]
         private void Construct(IInputService input)
         {
-            playerInput.actions = input.Actions;
+            playerInput.actions = input.ActionsAsset;
             playerInput.defaultActionMap = null;
         }
         #region Input

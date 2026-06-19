@@ -1,5 +1,6 @@
 using NLB.Core.GameState;
 using NLB.Core.Input;
+using NLB.Interaction;
 using NLB.Player;
 using VContainer;
 using VContainer.Unity;

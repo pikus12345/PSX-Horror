@@ -14,7 +14,9 @@ namespace NLB.Core.Input
             SetInput(InputType.Player);
         }
 
-        public InputActionAsset Actions => actions.asset;
+        public InputActionAsset ActionsAsset => actions.asset;
+
+        public ActionMap Actions => actions;
 
         /// <summary>
         /// Устанавливает тип управления

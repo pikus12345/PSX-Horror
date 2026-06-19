@@ -17,10 +17,11 @@ namespace NLB.Player
         {
             this.resolver = resolver;
         }
-        public void Spawn()
+        public GameObject Spawn()
         {
-            resolver.Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity, null);
+            GameObject obj = resolver.Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity, null);
             IsSpawned = true;
+            return obj;
         }
     }
 }
