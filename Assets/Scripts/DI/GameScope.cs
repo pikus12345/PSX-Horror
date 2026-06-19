@@ -1,5 +1,6 @@
-using NLB.Managers;
-using UnityEngine;
+using NLB.Core.GameState;
+using NLB.Core.Input;
+using NLB.Player;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,11 +10,17 @@ namespace NLB.DI
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            // InputManager
-            builder.Register<InputManager>(Lifetime.Singleton).As<IInput>();
+            // InputService
+            builder.Register<InputService>(Lifetime.Scoped).As<IInputService>();
 
-            // EntryPoint
-            builder.RegisterEntryPoint<EntryPoint>();
+            // Game State Machine
+            builder.Register<GameStateMachine>(Lifetime.Scoped).As<IGameStateMachine>();
+
+            // Player Spawner
+            builder.RegisterComponentInHierarchy<PlayerSpawner>();
+
+            // Game EntryPoint
+            builder.RegisterEntryPoint<GameEntryPoint>();
         }
     }
 }
