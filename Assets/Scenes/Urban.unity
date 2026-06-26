@@ -7443,26 +7443,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1048410784}
     m_Modifications:
-    - target: {fileID: 4041496334111799310, guid: bd2b132376183594a88f81e2644c68c3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041496334111799310, guid: bd2b132376183594a88f81e2644c68c3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041496334111799310, guid: bd2b132376183594a88f81e2644c68c3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.00000081956375
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041496334111799310, guid: bd2b132376183594a88f81e2644c68c3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4041496334111799310, guid: bd2b132376183594a88f81e2644c68c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7097671186994186342, guid: bd2b132376183594a88f81e2644c68c3, type: 3}
       propertyPath: m_Name
       value: house2

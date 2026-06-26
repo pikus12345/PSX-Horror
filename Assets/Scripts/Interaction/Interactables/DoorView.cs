@@ -11,8 +11,14 @@ namespace NLB.Interaction.Interactables
         
         public Transform Transform => transform;
         private DoorController controller = new DoorController();
+        [SerializeField] private float openAngle = 90f;
+        private IInteractor _lastInteractor;
         public bool CanInteract(IInteractor interactor) => true;
-        public void Interact(IInteractor interactor) => controller.Toggle();
+        public void Interact(IInteractor interactor)
+        {
+            _lastInteractor = interactor;
+            controller.Toggle();
+        }
         private void Awake()
         {
             startRotation = Transform.localEulerAngles;
@@ -35,13 +41,24 @@ namespace NLB.Interaction.Interactables
         }
         private void OpenDoor()
         {
-            Vector3 targetRotation = new Vector3(0,90,0) + startRotation;
+            Vector3 targetRotation = GetOpenTargetRotation();
             Transform?.DOLocalRotate(targetRotation, 1f, RotateMode.Fast).SetEase(Ease.OutBounce);
         }
         private void CloseDoor()
         {
-            Vector3 targetRotation = new Vector3(0,0,0) + startRotation;
+            Vector3 targetRotation = startRotation;
             Transform.DOLocalRotate(targetRotation, 1f, RotateMode.Fast).SetEase(Ease.OutBounce);
+        }
+        private Vector3 GetOpenTargetRotation()
+        {
+            float angle = openAngle;
+            if (_lastInteractor is MonoBehaviour mb)
+            {
+                Vector3 toPlayer = mb.transform.position - Transform.position;
+                if (Vector3.Dot(-Transform.forward, toPlayer) < 0)
+                    angle = -openAngle;
+            }
+            return new Vector3(0, angle, 0) + startRotation;
         }
     }
 }

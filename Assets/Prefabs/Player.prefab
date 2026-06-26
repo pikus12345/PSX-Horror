@@ -696,10 +696,6 @@ PrefabInstance:
       propertyPath: interactor
       value: 
       objectReference: {fileID: 6043114191108740397}
-    - target: {fileID: 9070150379568994848, guid: 528d8240ace69fa4da914e43f5b1b20b, type: 3}
-      propertyPath: m_fontSize
-      value: 36
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
