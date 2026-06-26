@@ -36,8 +36,8 @@ namespace NLB.Interaction{
                     if(currentTarget == null)
                     {
                         OnStartView?.Invoke(interactable.Hint);
-                        currentTarget = interactable;
                     }
+                    currentTarget = interactable;
                     isAnyTarget = true;
                     break;
                 }

@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "PSX-Horror.slnx"
+    "dotnet.defaultSolution": "PSX Horror.slnx"
 }
