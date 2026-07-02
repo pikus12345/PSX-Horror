@@ -12,7 +12,7 @@ namespace NLB.Core.Inventory
         // Получаение иконки предмета
         public Sprite Icon {get;}
     }
-    public class Item : ScriptableObject, IItem
+    public class AssetItem : ScriptableObject, IItem
     {
         // Название предмета
         [field: SerializeField] public string Name {get; private set;}
