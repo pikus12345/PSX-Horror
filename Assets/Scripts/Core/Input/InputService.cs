@@ -32,7 +32,6 @@ namespace NLB.Core.Input
                         actions.Player.Enable();
                         Cursor.lockState = CursorLockMode.Locked;
                         Cursor.visible = false;
-                        Debug.Log("Player InputType is set!");
                         break;
                     }
                 case InputType.UI:
@@ -41,7 +40,6 @@ namespace NLB.Core.Input
                         actions.Player.Disable();
                         Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
-                        Debug.Log("UI InputType is set!");
                         break;
                     }
             }

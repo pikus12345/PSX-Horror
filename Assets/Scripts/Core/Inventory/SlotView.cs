@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NLB.Core.Inventory
 {
@@ -16,7 +17,7 @@ namespace NLB.Core.Inventory
     }
     public class SlotView : MonoBehaviour, ISlotView
     {
-        [SerializeField] private SpriteRenderer iconRenderer;
+        [SerializeField] private Image iconRenderer;
         [SerializeField] private TMP_Text itemNameText;
 
         private IItemSlot attachedSlot;
@@ -68,7 +69,7 @@ namespace NLB.Core.Inventory
             else
             {
                 if (iconRenderer != null)
-                    iconRenderer.sprite = null;
+                    iconRenderer.enabled = false;
                 if (itemNameText != null)
                     itemNameText.text = "";
             }

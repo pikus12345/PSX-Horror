@@ -30,15 +30,19 @@ namespace NLB.DI
             // ----------------
 
             // ItemSlot
-            builder.Register<ItemSlot>(Lifetime.Transient).As<IItemSlot>();
+            builder.RegisterFactory<IItemSlot>(() => new ItemSlot());
 
             // Inventory model
             builder.Register<Inventory>(Lifetime.Singleton).As<IInventory>().WithParameter("size", 3);
 
+            // Inventory controller
+            builder.Register<InventoryController>(Lifetime.Singleton).As<IInventoryController>();
+
             // InventoryService
             builder.Register<InventoryService>(Lifetime.Singleton).As<IInventoryService>();
 
-
+            // InventoryInputHandler
+            builder.Register<InventoryInputHandler>(Lifetime.Scoped).AsSelf();  
         }
     }
 }

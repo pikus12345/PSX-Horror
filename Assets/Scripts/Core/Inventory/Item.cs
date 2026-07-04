@@ -11,6 +11,8 @@ namespace NLB.Core.Inventory
         public string Name {get;}
         // Получаение иконки предмета
         public Sprite Icon {get;}
+        // Использование предмета
+        public bool TryUse(IItemSlot slot);
     }
     public class AssetItem : ScriptableObject, IItem
     {
@@ -18,5 +20,7 @@ namespace NLB.Core.Inventory
         [field: SerializeField] public string Name {get; private set;}
         // Иконка предмета
         [field: SerializeField] public Sprite Icon {get; private set;}
+        // Использование предмета
+        public bool TryUse(IItemSlot slot) => false;
     }
 }
