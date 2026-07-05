@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3412180474068611841}
   - component: {fileID: 6555570207127903346}
   - component: {fileID: 3197376090771200044}
-  - component: {fileID: 6276062929397632387}
+  - component: {fileID: -2380380811827144649}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6276062929397632387
+--- !u!114 &-2380380811827144649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7742616117101142865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00648f355e9ab32428ffb30adaa024a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 08c7cf0b599cfc5408251a5397a85e3e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NLB.Interaction.Interactables.Pickable
-  itemData: {fileID: 11400000, guid: 4d60e411ec9756345a1b3413c29eec23, type: 2}
-  <Hint>k__BackingField: Pickup
+  m_EditorClassIdentifier: Assembly-CSharp::NLB.Interaction.Interactables.Takeable
+  item: {fileID: 11400000, guid: b32932f5a24414c4aa34d6b290157279, type: 2}

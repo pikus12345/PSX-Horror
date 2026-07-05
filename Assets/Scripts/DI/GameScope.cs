@@ -43,6 +43,16 @@ namespace NLB.DI
 
             // InventoryInputHandler
             builder.Register<InventoryInputHandler>(Lifetime.Scoped).AsSelf();  
+
+            // --------------------
+            // INTERACTABLES INJECT
+            // --------------------
+
+            // Takeable
+            builder.RegisterComponentInHierarchy<Takeable>();
+
+            // DoorView
+            builder.RegisterComponentInHierarchy<DoorView>();
         }
     }
 }

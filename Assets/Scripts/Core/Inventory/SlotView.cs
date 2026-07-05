@@ -62,16 +62,23 @@ namespace NLB.Core.Inventory
             if (item != null)
             {
                 if(iconRenderer != null)
+                {
                     iconRenderer.sprite = item.Icon;
+                    iconRenderer.enabled = true;
+                }
+                    
                 if(itemNameText != null)
+                {
                     itemNameText.text = item.Name;
+                    itemNameText.enabled = true;
+                }
             }
             else
             {
                 if (iconRenderer != null)
                     iconRenderer.enabled = false;
                 if (itemNameText != null)
-                    itemNameText.text = "";
+                    itemNameText.enabled = false;
             }
         }
 

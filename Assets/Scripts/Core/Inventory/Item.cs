@@ -8,19 +8,25 @@ namespace NLB.Core.Inventory
     public interface IItem
     {
         // Получаение названия предмета
-        public string Name {get;}
+        string Name {get;}
         // Получаение иконки предмета
-        public Sprite Icon {get;}
+        Sprite Icon {get;}
         // Использование предмета
-        public bool TryUse(IItemSlot slot);
+        bool TryUse(IItemSlot slot);
     }
+
+    [CreateAssetMenu(fileName = "Item Asset", menuName = "Items/Item")]
     public class AssetItem : ScriptableObject, IItem
     {
         // Название предмета
-        [field: SerializeField] public string Name {get; private set;}
+        [SerializeField] private string _name;
         // Иконка предмета
-        [field: SerializeField] public Sprite Icon {get; private set;}
+        [SerializeField] private Sprite icon;
+
+        [HideInInspector] public string Name => _name;
+        [HideInInspector] public Sprite Icon => icon;
+
         // Использование предмета
-        public bool TryUse(IItemSlot slot) => false;
+        public virtual bool TryUse(IItemSlot slot) => false;
     }
 }
