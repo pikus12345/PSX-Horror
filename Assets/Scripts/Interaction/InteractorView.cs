@@ -19,9 +19,10 @@ namespace NLB.Interaction
             interactor.OnStartView -= HandleStartView;
             interactor.OnExitView -= HandleExitView;
         }
-        private void HandleStartView(string hint)
+        private void HandleStartView(IInteractable interactable)
         {
-            hintText.text = hint;
+            if(interactable.CanInteract(interactor))
+            hintText.text = interactable.Hint;
         }
         private void HandleExitView()
         {

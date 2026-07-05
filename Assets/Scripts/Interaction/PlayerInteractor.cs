@@ -11,7 +11,7 @@ namespace NLB.Interaction{
         [SerializeField] private float interactRadius;
         [SerializeField] private LayerMask interactLayers;
 
-        public event Action<string> OnStartView;
+        public event Action<IInteractable> OnStartView;
         public event Action OnExitView;
         private IInputService input;
         private IInteractable currentTarget;
@@ -35,7 +35,7 @@ namespace NLB.Interaction{
                 {
                     if(currentTarget == null)
                     {
-                        OnStartView?.Invoke(interactable.Hint);
+                        OnStartView?.Invoke(interactable);
                     }
                     currentTarget = interactable;
                     isAnyTarget = true;

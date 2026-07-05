@@ -5,7 +5,7 @@ namespace NLB.Interaction
 {
     public interface IInteractor
     {
-        event Action<string> OnStartView;
+        event Action<IInteractable> OnStartView;
         event Action OnExitView;
     }
 }
