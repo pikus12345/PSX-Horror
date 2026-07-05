@@ -1,0 +1,54 @@
+@startuml InteractionSystem
+
+skinparam classAttributeIconSize 0
+hide circle
+
+package "NLB.Interaction" {
+
+    interface IInteractor {
+        + <<event>> OnStartView(IInteractable)
+        + <<event>> OnExitView()
+    }
+
+    class PlayerInteractor {
+        - interactDistance : float
+        - interactRadius : float
+        - interactLayers : LayerMask
+        - input : IInputService
+        - currentTarget : IInteractable
+        + <<event>> OnStartView(IInteractable)
+        + <<event>> OnExitView()
+        - Construct(input : IInputService) : void
+        - DetectTarget() : void
+        + OnInteract(context : InputAction.CallbackContext) : void
+    }
+
+    class PlayerInteractorView {
+        - hintText : TMP_Text
+        - interactor : PlayerInteractor
+        - HandleStartView(interactable : IInteractable) : void
+        - HandleExitView() : void
+    }
+
+}
+
+class MonoBehaviour <<Unity>> {
+}
+
+interface IInteractable <<external>> {
+}
+
+interface IInputService <<external>> {
+}
+
+PlayerInteractor ..|> IInteractor
+PlayerInteractor --|> MonoBehaviour
+
+PlayerInteractorView --> PlayerInteractor : interactor
+PlayerInteractorView --|> MonoBehaviour
+
+PlayerInteractorView ..> IInteractable : <<depends>>
+PlayerInteractor ..> IInteractable : <<depends>>
+PlayerInteractor ..> IInputService : <<depends>>
+
+@enduml
