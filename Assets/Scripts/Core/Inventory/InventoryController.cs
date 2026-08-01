@@ -83,13 +83,15 @@ namespace NLB.Core.Inventory
 
         public void SelectNextSlot()
         {
+            // Для прокрутки вперед
             int nextIndex = (ActiveSlotIndex + 1) % inventory.Size;
             SelectSlot(nextIndex);
         }
 
         public void SelectPreviousSlot()
         {
-            int nextIndex = (ActiveSlotIndex - 1) % inventory.Size;
+            // Для прокрутки назад (тестируется!)
+            int nextIndex = (ActiveSlotIndex - 1 + inventory.Size) % inventory.Size;
             SelectSlot(nextIndex);
         }
 
