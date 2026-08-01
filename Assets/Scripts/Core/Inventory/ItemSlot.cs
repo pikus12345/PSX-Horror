@@ -11,7 +11,7 @@ namespace NLB.Core.Inventory
     // 5. Попытаться забрать предмет из слота
     public interface IItemSlot
     {
-        event Action<IItem> OnItemChanged;
+        event Action<IItemSlot> OnSlotChanged;
         void SetItemForce(IItem item);
         bool TryPutItem(IItem item);
         IItem Item {get;}
@@ -20,7 +20,7 @@ namespace NLB.Core.Inventory
     public class ItemSlot : IItemSlot
     {
         // Событие при изменении предмета в слоте
-        public event Action<IItem> OnItemChanged;
+        public event Action<IItemSlot> OnSlotChanged;
 
         // Предмет внутри слота
         private IItem item = null;
@@ -37,7 +37,7 @@ namespace NLB.Core.Inventory
         public void SetItemForce(IItem item)
         {
             this.item = item;
-            OnItemChanged?.Invoke(Item);
+            OnSlotChanged?.Invoke(this);
         }
         /// <summary>
         /// Попытка взять предмет в слот
@@ -49,7 +49,7 @@ namespace NLB.Core.Inventory
             if (Item == null)
             {
                 this.item = item;
-                OnItemChanged?.Invoke(this.item); // Уведомляем об изменении
+                OnSlotChanged?.Invoke(this); // Уведомляем об изменении
                 return true; // Возвращаем true при успехе
             }
             return false; // Слот занят, возвращаем false
@@ -65,7 +65,7 @@ namespace NLB.Core.Inventory
             {
                 pickedItem = this.item; // Передаем
                 this.item = null; // Очищаем слот
-                OnItemChanged?.Invoke(null);
+                OnSlotChanged?.Invoke(null);
                 return true;
             }
             pickedItem = null;

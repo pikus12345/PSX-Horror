@@ -107,6 +107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NLB.Core.Inventory.SlotView
   iconRenderer: {fileID: 1359468580256612457}
   itemNameText: {fileID: 4420486998586263311}
+  selectedScale: 1.2
+  unselectedScale: 0.9
+  selectTransitionDuration: 0.1
 --- !u!1 &2668263900943124038
 GameObject:
   m_ObjectHideFlags: 0

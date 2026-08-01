@@ -14,9 +14,10 @@ namespace NLB.Core.Inventory
         /// <summary>
         /// Инициализация
         /// </summary>
-        /// <param name="slots">ItemSlot[] для инициализации</param>
+        /// <param name="inventory">Model для инициализации</param>
+        /// <param name="controller">Controller для инициализации</param>
         /// <returns>Инициализированные SlotView[]</returns>
-        void Initialize(IInventory inventory);
+        void Initialize(IInventory inventory, IInventoryController controller);
         /// <summary>
         /// Деинициализация сохранённых Views
         /// </summary>
@@ -36,13 +37,14 @@ namespace NLB.Core.Inventory
         [SerializeField] private Transform viewTransform;
         public IReadOnlyList<ISlotView> Views => views;
         private ISlotView[] views;
+        private IInventoryController controller;
 
         [Inject]
-        private void Construct(IInventory inventory)
+        private void Construct(IInventory inventory, IInventoryController controller)
         {
-            Initialize(inventory);
+            Initialize(inventory, controller);
         }
-        public void Initialize(IInventory inventory)
+        public void Initialize(IInventory inventory, IInventoryController controller)
         {
             // Если Views уже заданы, то сначала деинициализируем старые
             if(views != null)
@@ -52,6 +54,10 @@ namespace NLB.Core.Inventory
 
             views = new ISlotView[size];
 
+            // Подписка на изменение активного слота в Controller
+            this.controller = controller;
+            this.controller.OnActiveSlotChanged += OnActiveSlotChanged;
+
             for(int i = 0; i < size; i++)
             {
                 // Создать GameObject
@@ -60,6 +66,15 @@ namespace NLB.Core.Inventory
                 v.Attach(inventory.Slots[i]);
                 // Сохранить в массив
                 views[i] = v;
+            }
+            OnActiveSlotChanged(controller.ActiveSlotIndex);
+        }
+        private void OnActiveSlotChanged(int index)
+        {
+            // Проходимся по всем слотам
+            for (int i = 0; i < views.Length; i++)
+            {
+                views[i].SetSelected(i == index);
             }
         }
         public void Deinitialize()
@@ -73,6 +88,11 @@ namespace NLB.Core.Inventory
                 }
             }
             views = null;
+            controller.OnActiveSlotChanged -= OnActiveSlotChanged;
+        }
+        private void OnDestroy()
+        {
+            Deinitialize();
         }
     }
 }
