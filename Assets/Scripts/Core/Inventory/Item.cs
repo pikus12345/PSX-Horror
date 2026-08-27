@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace NLB.Core.Inventory
 {
-    public interface IItem
+    /* СТАРЫЙ ИНТЕРФЕЙС IITEM: overdesign + ошибки сериализации
+    public interface AssetItem
     {
         // Получаение названия предмета
         string Name {get;}
@@ -14,9 +15,9 @@ namespace NLB.Core.Inventory
         // Использование предмета
         bool TryUse(IItemSlot slot);
     }
-
+    */
     [CreateAssetMenu(fileName = "Item Asset", menuName = "Items/Item")]
-    public class AssetItem : ScriptableObject, IItem
+    public class AssetItem : ScriptableObject
     {
         // Название предмета
         [SerializeField] private string _name;

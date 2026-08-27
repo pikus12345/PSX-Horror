@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c7cf0b599cfc5408251a5397a85e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NLB.Interaction.Interactables.Takeable
-  item: {fileID: 11400000, guid: b32932f5a24414c4aa34d6b290157279, type: 2}
+  item: {fileID: 11400000, guid: e408432cea39f27479ef17273b29ee33, type: 2}

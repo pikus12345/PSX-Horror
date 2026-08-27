@@ -49,7 +49,7 @@ namespace NLB.Core.Inventory
         /// </summary>
         /// <param name="item">Предмет для взятия</param>
         /// <returns>Результат попытки</returns>
-        bool TryPickup(IItem item);
+        bool TryPickup(AssetItem item);
 
         /// <summary>
         /// Попытаться выкинуть предмет из активного слота.
@@ -57,7 +57,7 @@ namespace NLB.Core.Inventory
         /// </summary>
         /// <param name="droppedItem">Выкинутый предмет</param>
         /// <returns>Результат попытки</returns>
-        bool TryDrop(out IItem droppedItem);
+        bool TryDrop(out AssetItem droppedItem);
 
         /// <summary>
         /// Попытаться использовать предмет в активном слоте.
@@ -103,7 +103,7 @@ namespace NLB.Core.Inventory
             OnActiveSlotChanged?.Invoke(index);
         }
 
-        public bool TryDrop(out IItem droppedItem)
+        public bool TryDrop(out AssetItem droppedItem)
         {
             // TODO: Выкидвание префаба предмета из игрока
 
@@ -111,7 +111,7 @@ namespace NLB.Core.Inventory
             return ActiveSlot.TryPickupItem(out droppedItem);
         }
 
-        public bool TryPickup(IItem item)
+        public bool TryPickup(AssetItem item)
         {
             if(item == null) return false;
 
@@ -122,7 +122,7 @@ namespace NLB.Core.Inventory
 
         public bool TryUse()
         {
-            IItem item = ActiveSlot.Item;
+            AssetItem item = ActiveSlot.Item;
             if (item == null)
                 return false;
 

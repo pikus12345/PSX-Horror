@@ -12,10 +12,10 @@ namespace NLB.Core.Inventory
     public interface IItemSlot
     {
         event Action<IItemSlot> OnSlotChanged;
-        void SetItemForce(IItem item);
-        bool TryPutItem(IItem item);
-        IItem Item {get;}
-        bool TryPickupItem(out IItem pickedItem);
+        void SetItemForce(AssetItem item);
+        bool TryPutItem(AssetItem item);
+        AssetItem Item {get;}
+        bool TryPickupItem(out AssetItem pickedItem);
     }
     public class ItemSlot : IItemSlot
     {
@@ -23,18 +23,18 @@ namespace NLB.Core.Inventory
         public event Action<IItemSlot> OnSlotChanged;
 
         // Предмет внутри слота
-        private IItem item = null;
+        private AssetItem item = null;
 
         /// <summary>
         /// Возвращает предмет, лежащий в слоте
         /// </summary>
-        public IItem Item => item;
+        public AssetItem Item => item;
 
         /// <summary>
         /// Принудительно заменяет предмет, лежащей в слоте
         /// </summary>
         /// <param name="item">Новый предмет</param>
-        public void SetItemForce(IItem item)
+        public void SetItemForce(AssetItem item)
         {
             this.item = item;
             OnSlotChanged?.Invoke(this);
@@ -44,7 +44,7 @@ namespace NLB.Core.Inventory
         /// </summary>
         /// <param name="item">Новый предмет</param>
         /// <returns>Результат попытки взять предмет в слот</returns>
-        public bool TryPutItem(IItem item)
+        public bool TryPutItem(AssetItem item)
         {
             if (Item == null)
             {
@@ -59,7 +59,7 @@ namespace NLB.Core.Inventory
         /// </summary>
         /// <param name="pickedItem">Забранный предмет</param>
         /// <returns>Результат попытки забрать предмет из слота</returns>
-        public bool TryPickupItem(out IItem pickedItem)
+        public bool TryPickupItem(out AssetItem pickedItem)
         {
             if (Item != null)
             {
